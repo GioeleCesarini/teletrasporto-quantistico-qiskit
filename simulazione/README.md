@@ -1,1 +1,1 @@
-Qui puoi trovare il programme per la simulazione ideale del protocollo di Teletrasporto Quantistico.
+Qui puoi trovare il programma per la simulazione ideale del protocollo di Teletrasporto Quantistico.
