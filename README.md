@@ -9,11 +9,10 @@ Codice della tesi triennale in Fisica (Università degli Studi di Genova, a.a. 2
 | `simulazione/` | Costruzione del circuito, verifica sul vettore di stato e verifica statistica su simulatore ideale | Capitolo 4 |
 | `hardware/` | Esecuzione dello stesso circuito su un processore IBM Quantum e confronto con la simulazione | Capitolo 5 |
 
-
 ## Requisiti
 
 - Python 3.10.12
-- Qiskit 2.5.2, Qiskit Aer 0.17.2
+- Qiskit 2.5.2, Qiskit Aer 0.17.2, Qiskit IBM Runtime 0.49.0
 - NumPy, Matplotlib, pylatexenc, Jupyter
 
 ## Esecuzione
@@ -23,11 +22,9 @@ Codice della tesi triennale in Fisica (Università degli Studi di Genova, a.a. 2
     pip install -r requirements.txt
     jupyter notebook locale_completo.ipynb
 
-Poi eseguire tutte le celle in ordine (Kernel → Restart & Run All). Le figure vengono salvate nella cartella `immagini/`.
+## Riproducibilità dei risultati su macchina simulata
 
-## Riproducibilità
-
-I semi sono fissati (`SEME_STATO = SEME_SIMULATORE = 42`) e ogni circuito viene eseguito `N_SHOTS = 1024` volte. Con questi valori si ottengono:
+I semi sono fissati (`SEME_STATO = SEME_SIMULATORE = 42`) e ogni circuito viene eseguito 1024 volte. Con questi valori si ottengono:
 
 | (m_C, m_A) | Correzione di Bob | Conteggi | Errori |
 |---|---|---|---|
@@ -35,6 +32,10 @@ I semi sono fissati (`SEME_STATO = SEME_SIMULATORE = 42`) e ogni circuito viene 
 | (0, 1) | X | 278 | 0 |
 | (1, 0) | Z | 254 | 0 |
 | (1, 1) | ZX | 253 | 0 |
+
+## Riproducibilità dei risultati su macchina IBM
+
+I risultati su hardware non sono riproducibili esattamente, perché il rumore del processore varia nel tempo.
 
 ## Fonti
 
