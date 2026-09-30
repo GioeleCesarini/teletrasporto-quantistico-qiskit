@@ -41,7 +41,13 @@ I risultati su hardware non sono riproducibili esattamente, perché il rumore de
 
 Il protocollo da me implementato segue il più possibile il capitolo sul teletrasporto del [Qiskit Textbook](https://github.com/Qiskit/textbook/blob/main/notebooks/ch-algorithms/teleportation.ipynb), adattato alla versione attuale di Qiskit e alla notazione della tesi (qubit C, A, B e bit classici m_C, m_A).
 
-Nota sulle fonti: la preparazione dello stato usa rotazioni RY/RZ invece di `Initialize`, perché con Qiskit 2.5.2 + Qiskit-aer 0.17.2 la combinazione `Initialize` + `gates_to_uncompute()` causava il crash del kernel.
+## Cambiamenti apportati al Quskit Textbook di IBM
+1) La preparazione dello stato usa rotazioni RY/RZ invece di `Initialize`, perché con Qiskit 2.5.2 + Qiskit-aer 0.17.2 la combinazione `Initialize` + `gates_to_uncompute()` causava il crash del kernel nel mio ambiente locale (? qiskit.extensions rimosso).
+2) Il pacchetto qiskit-ibmq-provider (non più esistente) è stato sostituito con qiskit-ibm-runtime
+3) qiskit.providers.ibmq non esiste più => least_busy sostituito con service.least_busy(operational=True, simulator=False, min_num_qubits=3)
+4) qiskit.tools è stato rimosso => non serve sostituirlo basta usare job.status() e job.result()
+5) I circuiti ora si eseguono con la primitiva Sampler
+6) qiskit.tools.jupyter non esiste più => le versioni vengono stampate e salvate nel file dei risultati.
 
 ## Uso di strumenti di IA
 
