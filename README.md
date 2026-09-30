@@ -15,13 +15,6 @@ Codice della tesi triennale in Fisica (Università degli Studi di Genova, a.a. 2
 - Qiskit 2.5.2, Qiskit Aer 0.17.2, Qiskit IBM Runtime 0.49.0
 - NumPy, Matplotlib, pylatexenc, Jupyter
 
-## Esecuzione
-
-    python -m venv .venv
-    source .venv/bin/activate
-    pip install -r requirements.txt
-    jupyter notebook locale_completo.ipynb
-
 ## Riproducibilità dei risultati su macchina simulata
 
 I semi sono fissati (`SEME_STATO = SEME_SIMULATORE = 42`) e ogni circuito viene eseguito 1024 volte. Con questi valori si ottengono:
