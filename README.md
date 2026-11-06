@@ -45,3 +45,7 @@ Il protocollo da me implementato segue il più possibile il capitolo sul teletra
 ## Uso di strumenti di IA
 
 L'aggiornamento del codice alle API correnti di Qiskit e la correzione del problema di compatibilità con l'ambiente locale sono stati sviluppati con l'assistenza di un modello linguistico (Claude, Anthropic), sotto la supervisione e la verifica dell'autore.
+
+## Licenza
+
+Il codice è rilasciato con licenza [MIT](LICENSE): puoi usarlo, modificarlo e riutilizzarlo liberamente, anche in altri progetti, mantenendo la nota di copyright.
