@@ -26,7 +26,7 @@ Nella notazione della tesi:
 1. Alice possiede il qubit **C**, che contiene lo stato da teletrasportare, e il qubit **A**; Bob possiede il qubit **B**.
 2. I qubit **A** e **B** vengono preparati in uno stato di Bell.
 3. Alice misura **C** e **A** nella base di Bell e ottiene i bit classici $m_C$ e $m_A$.
-4. Bob riceve i due bit e applica al qubit **B** la correzione $Z^{m_C} X^{m_A}$: a quel punto **B** si trova nello stato iniziale di **C**.
+4. Bob riceve i due bit e applica al qubit **B** la correzione giusta: a quel punto **B** si trova nello stato iniziale di **C**.
 
 ## Contenuto del repository
 
