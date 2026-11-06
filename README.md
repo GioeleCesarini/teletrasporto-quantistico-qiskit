@@ -11,7 +11,7 @@ Il repository contiene il codice e la tesi triennale in cui il lavoro è descrit
 
 > **Teletrasporto Quantistico: simulazione e realizzazione su quantum computer IBM**
 > Prova finale, Corso di Laurea in Fisica, Università degli Studi di Genova, a.a. 2025/2026
-> Candidato: Gioele Cesarini · Relatrice: Prof.ssa Marina Putti
+> Candidato: Gioele Cesarini
 
 📄 **[Leggi la tesi (PDF)](tesi/Cesarini_Gioele_tesi.pdf)**
 
