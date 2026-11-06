@@ -61,7 +61,7 @@ con 1/4, e in nessun caso lo stato ricevuto da Bob differisce da quello di parte
 > calibrazione all'altra. L'analisi completa e il confronto con la simulazione
 > sono nel capitolo 5 della tesi.
 
-Su ibm_marrakesh il tasso di errore misurato da me è stato del 3.32% (34 esiti errati su 1024), contro lo 0% della simulazione ideale.
+Su `ibm_marrakesh` il tasso di errore misurato da me è stato del 3.32% (34 esiti errati su 1024), contro lo 0% della simulazione ideale.
 
 ## Come eseguire il codice
 
