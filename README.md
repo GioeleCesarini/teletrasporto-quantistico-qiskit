@@ -1,55 +1,67 @@
 # Teletrasporto quantistico con Qiskit
 
-Codice della tesi triennale in Fisica (Università degli Studi di Genova, a.a. 2025/2026): implementazione del teletrasporto quantistico con Qiskit, simulazione ideale ed esecuzione su hardware IBM Quantum.
+![Python](https://img.shields.io/badge/Python-3.10-3776AB?logo=python&logoColor=white)
+![Qiskit](https://img.shields.io/badge/Qiskit-2.5.2-6929C4?logo=qiskit&logoColor=white)
+![IBM Quantum](https://img.shields.io/badge/IBM_Quantum-hardware_reale-052FAD?logo=ibm&logoColor=white)
+![Licenza](https://img.shields.io/badge/licenza-MIT-green)
 
-## Documento della tesi
+Implementazione del protocollo di teletrasporto quantistico con Qiskit, verificata su
+simulatore ideale ed eseguita su un processore quantistico reale di IBM.
+Il repository contiene il codice e la tesi triennale in cui il lavoro è descritto.
 
-📄 La tesi completa è disponibile qui: [link]
+> **Teletrasporto Quantistico: simulazione e realizzazione su quantum computer IBM**
+> Prova finale, Corso di Laurea in Fisica, Università degli Studi di Genova, a.a. 2025/2026
+> Candidato: Gioele Cesarini · Relatrice: Prof.ssa Marina Putti
 
-## Struttura
+📄 **[Leggi la tesi (PDF)](tesi/Tesi_Cesarini_Teletrasporto.pdf)**
+
+---
+
+## Il protocollo
+
+Il teletrasporto quantistico trasferisce lo stato di un qubit da Alice a Bob usando
+una coppia di qubit entangled e due bit classici, senza spostare fisicamente il qubit.
+Nella notazione della tesi:
+
+1. Alice possiede il qubit **C**, che contiene lo stato da teletrasportare, e il qubit **A**; Bob possiede il qubit **B**.
+2. I qubit **A** e **B** vengono preparati in uno stato di Bell.
+3. Alice misura **C** e **A** nella base di Bell e ottiene i bit classici $m_C$ e $m_A$.
+4. Bob riceve i due bit e applica al qubit **B** la correzione $Z^{m_C} X^{m_A}$: a quel punto **B** si trova nello stato iniziale di **C**.
+
+## Contenuto del repository
 
 | Cartella | Contenuto | Tesi |
 |---|---|---|
 | `simulazione/` | Costruzione del circuito, verifica sul vettore di stato e verifica statistica su simulatore ideale | Capitolo 4 |
 | `hardware/` | Esecuzione dello stesso circuito su un processore IBM Quantum e confronto con la simulazione | Capitolo 5 |
+| `tesi/` | La tesi completa in PDF | |
 
-## Requisiti
+## Risultati
 
-- Python 3.10.12
-- Qiskit 2.5.2, Qiskit Aer 0.17.2, Qiskit IBM Runtime 0.49.0
-- NumPy, Matplotlib, pylatexenc, Jupyter
+### Simulatore ideale
 
-## Riproducibilità dei risultati su macchina simulata
+I semi sono fissati (`SEME_STATO = SEME_SIMULATORE = 42`) e ogni circuito viene
+eseguito 1024 volte, quindi i risultati sono riproducibili esattamente:
 
-I semi sono fissati (`SEME_STATO = SEME_SIMULATORE = 42`) e ogni circuito viene eseguito 1024 volte. Con questi valori si ottengono:
+| $(m_C, m_A)$ | Correzione di Bob | Conteggi | Errori |
+|:---:|:---:|:---:|:---:|
+| (0, 0) | $I$ | 239 | 0 |
+| (0, 1) | $X$ | 278 | 0 |
+| (1, 0) | $Z$ | 254 | 0 |
+| (1, 1) | $ZX$ | 253 | 0 |
 
-| (m_C, m_A) | Correzione di Bob | Conteggi | Errori |
-|---|---|---|---|
-| (0, 0) | I | 239 | 0 |
-| (0, 1) | X | 278 | 0 |
-| (1, 0) | Z | 254 | 0 |
-| (1, 1) | ZX | 253 | 0 |
+Tutti e quattro gli esiti della misura di Alice compaiono con frequenze compatibili
+con 1/4, e in nessun caso lo stato ricevuto da Bob differisce da quello di partenza.
 
-## Riproducibilità dei risultati su macchina IBM
+### Hardware IBM Quantum
 
-I risultati su hardware non sono riproducibili esattamente, perché il rumore del processore varia nel tempo.
+> [!NOTE]
+> I risultati su hardware reale non sono riproducibili esattamente: il rumore del
+> processore (decoerenza, errori di gate e di lettura) varia nel tempo e da una
+> calibrazione all'altra. L'analisi completa e il confronto con la simulazione
+> sono nel capitolo 5 della tesi.
 
-## Fonti
+## Come eseguire il codice
 
-Il protocollo da me implementato segue il più possibile il capitolo sul teletrasporto del [Qiskit Textbook](https://github.com/Qiskit/textbook/blob/main/notebooks/ch-algorithms/teleportation.ipynb), adattato alla versione attuale di Qiskit e alla notazione della tesi (qubit C, A, B e bit classici m_C, m_A).
-
-## Cambiamenti apportati al Quskit Textbook di IBM
-1) La preparazione dello stato usa rotazioni RY/RZ invece di `Initialize`, perché con Qiskit 2.5.2 + Qiskit-aer 0.17.2 la combinazione `Initialize` + `gates_to_uncompute()` causava il crash del kernel nel mio ambiente locale (? qiskit.extensions rimosso).
-2) Il pacchetto qiskit-ibmq-provider (non più esistente) è stato sostituito con qiskit-ibm-runtime
-3) qiskit.providers.ibmq non esiste più => least_busy sostituito con service.least_busy(operational=True, simulator=False, min_num_qubits=3)
-4) qiskit.tools è stato rimosso => non serve sostituirlo basta usare job.status() e job.result()
-5) I circuiti ora si eseguono con la primitiva Sampler
-6) qiskit.tools.jupyter non esiste più => le versioni vengono stampate e salvate nel file dei risultati.
-
-## Uso di strumenti di IA
-
-L'aggiornamento del codice alle API correnti di Qiskit e la correzione del problema di compatibilità con l'ambiente locale sono stati sviluppati con l'assistenza di un modello linguistico (Claude, Anthropic), sotto la supervisione e la verifica dell'autore.
-
-## Licenza
-
-Il codice è rilasciato con licenza [MIT](LICENSE): puoi usarlo, modificarlo e riutilizzarlo liberamente, anche in altri progetti, mantenendo la nota di copyright.
+````bash
+git clone https://github.com/GioeleCesarini/teletrasporto-quantistico-qiskit
