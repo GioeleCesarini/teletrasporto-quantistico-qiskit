@@ -2,6 +2,10 @@
 
 Codice della tesi triennale in Fisica (Università degli Studi di Genova, a.a. 2025/2026): implementazione del teletrasporto quantistico con Qiskit, simulazione ideale ed esecuzione su hardware IBM Quantum.
 
+## Documento della tesi
+
+📄 La tesi completa è disponibile qui: [link]
+
 ## Struttura
 
 | Cartella | Contenuto | Tesi |
